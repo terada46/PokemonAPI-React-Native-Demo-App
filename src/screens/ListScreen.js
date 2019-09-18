@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { 
     FlatList, 
     View, 
@@ -12,7 +12,7 @@ import { styles } from '../styles/ListScreen.style';
 import { PokemonCall } from '../utils/getData';
 import { getFirebaseURL, formatId } from '../config/functions';
 
-export default class PokemonList extends PureComponent {
+export default class PokemonList extends Component {
     constructor(props) {
         super(props);
         this.state = {
