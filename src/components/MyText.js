@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, Platform } from 'react-native';
-import { IOS_FONT, ANDROID_FONT } from '../config/constants'
-
-function toTitleCase(str) {
-    return str.toString().replace(/\w\S*/g, function(txt){
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-}
+import { IOS_FONT, ANDROID_FONT } from '../config/constants';
+import { titleCase } from '../config/functions';
 
 export const MyText = ({ children, style }) => (
     <Text style={[{
@@ -18,8 +13,8 @@ export const MyText = ({ children, style }) => (
                 fontFamily: ANDROID_FONT,
             },
         }),
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '600',
         lineHeight:27,
-    }, style]}>{toTitleCase(children)}</Text>  
+    }, style]}>{titleCase(children)}</Text>  
 );

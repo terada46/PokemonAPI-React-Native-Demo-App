@@ -1,12 +1,12 @@
-import { Dimensions } from 'react-native' ;
+import { Dimensions } from 'react-native';
 
 export const SCREEN_WIDTH = Dimensions.get('window').width;
 export const ITEM_WIDTH = (SCREEN_WIDTH - 5 ) / 2 - 8;
 export const IMAGE_BASIC_SIZE = 96;
 
-export const IOS_FONT = 'KannadaSangamMN-Bold';
-export const ANDROID_FONT = 'Roboto';
-export const ARIAL_ROUND_FONT = 'ArialRoundedMTBold';
+export const IOS_FONT = 'BarlowCondensed-SemiBold';
+export const ANDROID_FONT = 'Roboto-Medium';
+//export const ARIAL_ROUND_FONT = 'ArialRoundedMTBold';
 
 //Firebase hosting (fastest)
 export const FIREBASE_API = 'https://pokeapi-215911.firebaseapp.com/api/v2/';

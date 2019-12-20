@@ -11,6 +11,7 @@ import {
 import { styles } from '../styles/ListScreen.style';
 import { PokemonCall } from '../utils/getData';
 import { getFirebaseURL, formatId } from '../config/functions';
+import * as Font from 'expo-font';
 
 export default class PokemonList extends Component {
     constructor(props) {
@@ -21,8 +22,11 @@ export default class PokemonList extends Component {
             refreshing: false
         }
     }
-
-    componentWillMount() {
+    componentDidMount() {   
+        Font.loadAsync({
+            'BarlowCondensed-SemiBold': require('../../assets/fonts/BarlowCondensed-SemiBold.ttf'),
+            'Roboto-Medium': require('../../assets/fonts/Roboto-Medium.ttf')
+        });
         this.isScrolled = false;
         this._fetchPokemonList();
     }

@@ -12,7 +12,7 @@ export default class PokemonRender extends Component {
         chain: []
     }
     
-    componentWillMount() {
+    componentDidMount() {
         this._fetchChain();
     }
 

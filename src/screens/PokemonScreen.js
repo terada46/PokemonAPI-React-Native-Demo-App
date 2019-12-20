@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Text, View, SafeAreaView, Platform } from 'react-native';
 import PokemonRenderer from '../components/PokemonRenderer';
 import { styles } from '../styles/PokemonScreen.style';
-import { formatTitle } from '../config/functions';
+import { titleCase } from '../config/functions';
 
 export default class PokemonScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: formatTitle(navigation.state.params.pokemon.name),
+      title: titleCase(navigation.state.params.pokemon.name),
       headerTitleStyle: {
         ...Platform.select({
           ios: {
@@ -25,7 +25,7 @@ export default class PokemonScreen extends Component {
     data: {},
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this._catchData();
   } 
 
