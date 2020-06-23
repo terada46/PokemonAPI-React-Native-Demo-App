@@ -20,7 +20,6 @@ export default class PokemonScreen extends Component {
       }
     };
   }
-
   state = {
     data: {},
   }
@@ -29,9 +28,9 @@ export default class PokemonScreen extends Component {
     this._catchData();
   } 
 
-  _catchData() {
-    const { navigation } = this.props;
-    const thisPokemon = navigation.getParam('pokemon', 'not exist');
+  _catchData = () => {
+    let { navigation } = this.props;
+    let thisPokemon = navigation.getParam('pokemon', 'not exist');
     if (thisPokemon.id) {
       this.setState({
         data: Object.assign({}, thisPokemon)
@@ -41,7 +40,7 @@ export default class PokemonScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={ styles.safeAreaStyle }>
+      <SafeAreaView style={styles.safeAreaStyle}>
         <View style={styles.container}>
           {Object.keys(this.state.data).length > 0 ? (
             <PokemonRenderer data={this.state.data} />

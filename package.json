@@ -21,7 +21,8 @@
     "react-navigation-stack": "^1.5.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "^6.0.0"
+    "babel-preset-expo": "^6.0.0",
+    "react-native-infinite-flatlist-patch": "^1.0.6"
   },
   "private": true
 }

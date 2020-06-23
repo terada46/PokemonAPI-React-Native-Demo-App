@@ -1,26 +1,15 @@
-import { FIREBASE_API, POKE_API } from './constants'
+import { POKE_API } from './constants'
 
 export function NormalizeListURL(endpoint, offset) {
-    return FIREBASE_API + `${endpoint}/?offset=${offset}`;
+    return POKE_API + `${endpoint}/?limit=20&offset=${offset}`;
 }
 
 export function NormalizePokemonURL(endpoint) {
-    return FIREBASE_API + 'pokemon/' + endpoint;
+    return POKE_API + 'pokemon/' + endpoint;
 }
 
 export function NormalizeSpeciesURL(endpoint) {
-    return FIREBASE_API + 'pokemon-species/' + endpoint;
-}
-
-export function getFirebaseURL(url) {
-    //Repace url to firebase api because connection to firebase host is faster
-    if (url.search(POKE_API) != -1) {
-        let r = url.split('/v2/'); 
-        let FIREBASE_URL = FIREBASE_API + r[1];
-        return FIREBASE_URL;
-    } else {
-        return url;
-    }
+    return POKE_API + 'pokemon-species/' + endpoint;
 }
 
 export function filterMoves(moves) {
@@ -52,4 +41,3 @@ export function titleCase(str) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
 }
-  

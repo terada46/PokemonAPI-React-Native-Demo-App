@@ -2,7 +2,6 @@ import {
     NormalizeListURL, 
     NormalizePokemonURL, 
     NormalizeSpeciesURL,
-    getFirebaseURL
 } from '../config/functions'
 import { BEEDRILL_EVOLUTION_CHAIN } from '../config/constants';
 import axios from 'axios';
@@ -25,10 +24,9 @@ async function loadJson(url, source) {
     }
 }
 
-export class PokemonCall {
+export default class PokemonCall {
     static async getList(endpoint, offset) {
         let lists, listURL = NormalizeListURL(endpoint, offset);
-        //console.log('Begin to get list');
         try {
             lists = await loadJson(listURL);
         } catch (err) { 
@@ -69,8 +67,8 @@ export class PokemonCall {
                     throw err;
                 }
             } else {
-                SpeciesRes = await loadJson( NormalizeSpeciesURL(thisName), source );
-                ChainRes = await loadJson( getFirebaseURL(SpeciesRes.data.evolution_chain.url), source );
+                SpeciesRes = await loadJson(NormalizeSpeciesURL(thisName), source);
+                ChainRes = await loadJson(SpeciesRes.data.evolution_chain.url, source);
             }
         } catch (err) {
             if (err instanceof HttpError && err.response.status == 404) {
@@ -88,7 +86,7 @@ export class PokemonCall {
                     arrays.push({name: thisName, image: front_default})
                 } else {
                     try {
-                        let pokemon = await this.getPokemon( NormalizePokemonURL(species.name), source );
+                        let pokemon = await this.getPokemon(NormalizePokemonURL(species.name), source);
                         let front_image = pokemon.data.sprites.front_default;
                         arrays.push({name: species.name, image: front_image});
                     } catch (err) {
@@ -103,7 +101,7 @@ export class PokemonCall {
                             arrays.push({name: thisName, image: front_default})
                         } else {
                             try {
-                                let pokemon = await this.getPokemon( NormalizePokemonURL(evolvesTo[0].species.name), source );
+                                let pokemon = await this.getPokemon(NormalizePokemonURL(evolvesTo[0].species.name), source);
                                 let front_image = pokemon.data.sprites.front_default;
                                 arrays.push({name: evolvesTo[0].species.name, image: front_image});
                             } catch (err) {
@@ -118,7 +116,7 @@ export class PokemonCall {
                             arrays.push({name: thisName, image: front_default})
                         } else {
                             try {
-                                let pokemon = await this.getPokemon( NormalizePokemonURL(evolvesTo[prop].species.name), source );
+                                let pokemon = await this.getPokemon(NormalizePokemonURL(evolvesTo[prop].species.name), source);
                                 let front_image = pokemon.data.sprites.front_default;
                                 arrays.push({name: evolvesTo[prop].species.name, image: front_image});
                             } catch (err) {
